@@ -139,7 +139,7 @@ class Response
     {
         $xml = simplexml_load_string($this->xmlstr, 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOWARNING);
         if ($xml === false) {
-            throw new ZohoCRMException("Zoho CRM response could not be parsed as XML.", 0000);
+            throw new ZohoCRMException("Zoho CRM response could not be parsed as XML.", '0000');
         }
 
         if (isset($xml->error)) {
@@ -197,7 +197,7 @@ class Response
             preg_match('/[0-9]{18}/', $this->message, $matches);
             $this->recordId = $matches[0];
         } else {
-            throw new ZohoCRMException("Unknown Zoho CRM response format.");
+            throw new ZohoCRMException("Unknown Zoho CRM response format.", '0000');
         }
     }
 
